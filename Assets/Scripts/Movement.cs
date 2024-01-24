@@ -6,18 +6,31 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rb;
     public float speed = 4.0f;
-
+    public float jump_speed = 5.0f;
+    public Vector3 jump;
+    public bool grounded;
+    public float gravity_scale = 4;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    private void FixedUpdate()
+    void OnCollisionStay()
     {
-        float input = Input.GetAxisRaw("Horizontal"); // Returns 1 when moving right and -1 when moving left
-        Vector3 move = transform.right * input * speed * Time.deltaTime;
+        grounded = true;
+    }
+        // Update is called once per frame
+        private void FixedUpdate()
+    {
+        float inputh = Input.GetAxisRaw("Horizontal"); // Returns 1 when moving right and -1 when moving left
+        Vector3 move = transform.right * inputh * speed * Time.deltaTime;
         rb.MovePosition(transform.position + move);
+        rb.AddForce(Physics.gravity * gravity_scale * rb.mass);
+        if (Input.GetAxisRaw("Vertical")==1 && grounded) {
+            rb.AddForce(jump * jump_speed, ForceMode.Impulse);
+            grounded = false;
+        }
+
     }
 }
