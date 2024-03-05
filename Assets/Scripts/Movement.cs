@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     public Vector3 jump;
     public bool grounded;
     public float gravity_scale = 4;
+    public GameObject body;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +26,19 @@ public class Movement : MonoBehaviour
     {
         float inputh = Input.GetAxisRaw("Horizontal"); // Returns 1 when moving right and -1 when moving left
         Vector3 move = transform.right * inputh * speed * Time.deltaTime;
+
+        Quaternion rotation = Quaternion.Euler(0,90*inputh,0);
+        body.transform.localRotation = rotation;
+    
         rb.MovePosition(transform.position + move);
         rb.AddForce(Physics.gravity * gravity_scale * rb.mass);
+    
         if (Input.GetAxisRaw("Vertical")==1 && grounded) {
             rb.AddForce(jump * jump_speed, ForceMode.Impulse);
             grounded = false;
         }
+
+
 
     }
 }
