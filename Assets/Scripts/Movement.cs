@@ -11,16 +11,14 @@ public class Movement : MonoBehaviour
     public bool grounded;
     public float gravity_scale = 4;
     public GameObject body;
+    public GameObject feet;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnCollisionStay()
-    {
-        grounded = true;
-    }
+
         // Update is called once per frame
         private void FixedUpdate()
     {
@@ -33,9 +31,13 @@ public class Movement : MonoBehaviour
         rb.MovePosition(transform.position + move);
         rb.AddForce(Physics.gravity * gravity_scale * rb.mass);
     
+        Collider groundCheck = Physics.OverlapSphere(feet.transform.position,0.5f,LayerMask.GetMask("Ground"))[0];
+        if (groundCheck != null) grounded = true;
+
         if (Input.GetAxisRaw("Vertical")==1 && grounded) {
             rb.AddForce(jump * jump_speed, ForceMode.Impulse);
             grounded = false;
+            Debug.Log("Jump");
         }
 
 
