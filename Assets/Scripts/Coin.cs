@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         transform.Rotate(0,yAngle,0,Space.Self);
     }
