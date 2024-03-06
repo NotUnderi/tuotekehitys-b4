@@ -6,17 +6,14 @@ using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour
 {
-    public Button startButton,exitButton,creditsButton;
     void Start()
     {
-        startButton.onClick.AddListener(delegate{loadScene(1);});
-        exitButton.onClick.AddListener(quit);
-        creditsButton.onClick.AddListener(delegate{loadScene(2);});
+        
     }
 
-    void quit() {Application.Quit();}
-    void loadScene(int sceneIndex){
-        SceneManager.LoadScene(sceneIndex,LoadSceneMode.Single);
+    public void quit() {Application.Quit();}
+    public void loadScene(string sceneName){
+        SceneManager.LoadScene(sceneName,LoadSceneMode.Single);
     }
     // Update is called once per frame
     void Update()
