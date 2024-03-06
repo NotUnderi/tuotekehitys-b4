@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class LoadScene : MonoBehaviour
 {
-    public Button button1,button2,button3;
+    public Button startButton,exitButton,creditsButton;
     void Start()
     {
-        button1.onClick.AddListener(delegate{loadScene(1);});
-        button2.onClick.AddListener(quit);
-        button3.onClick.AddListener(delegate{loadScene(2);});
+        startButton.onClick.AddListener(delegate{loadScene(1);});
+        exitButton.onClick.AddListener(quit);
+        creditsButton.onClick.AddListener(delegate{loadScene(2);});
     }
 
     void quit() {Application.Quit();}

@@ -1207,9 +1207,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a127a7ad27194c3a9c89706f0d3138, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  button1: {fileID: 84167635}
-  button2: {fileID: 456283807}
-  button3: {fileID: 1063814201}
+  startButton: {fileID: 84167635}
+  exitButton: {fileID: 456283807}
+  creditsButton: {fileID: 1063814201}
 --- !u!4 &2015016425
 Transform:
   m_ObjectHideFlags: 0
