@@ -248,10 +248,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Created using assets from ambientCG.com,
+  m_text: 'Created using assets from ambientCG.com and freesound.org,
 
-    licensed under the Creative
-    Commons CC0 1.0 Universal License.'
+    licensed
+    under the Creative Commons CC0 1.0 Universal License.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
