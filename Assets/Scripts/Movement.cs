@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     Rigidbody rb;
+    AudioSource jumpSound;
     public float speed = 4.0f;
     public float jump_speed = 5.0f;
     public Vector3 jump;
@@ -12,10 +13,13 @@ public class Movement : MonoBehaviour
     public float gravity_scale = 4;
     public GameObject body;
     public GameObject feet;
+
+    private float lastPressed;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        jumpSound = GetComponent<AudioSource>();
     }
 
 
@@ -30,13 +34,15 @@ public class Movement : MonoBehaviour
     
         rb.MovePosition(transform.position + move);
         rb.AddForce(Physics.gravity * gravity_scale * rb.mass);
-    
+        //bug.Log(Time.fixedTime);
         Collider groundCheck = Physics.OverlapSphere(feet.transform.position,0.5f,LayerMask.GetMask("Ground"))[0];
         if (groundCheck != null) grounded = true;
 
-        if (Input.GetAxisRaw("Vertical")==1 && grounded) {
+        if (Input.GetAxisRaw("Vertical") == 1 && grounded && lastPressed + 0.3f < Time.fixedTime) { 
             rb.AddForce(jump * jump_speed, ForceMode.Impulse);
             grounded = false;
+            jumpSound.Play();
+            lastPressed = Time.fixedTime;
             Debug.Log("Jump");
         }
 

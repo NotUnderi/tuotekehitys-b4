@@ -8,6 +8,8 @@ public class PointCounter : MonoBehaviour
 
     public float points;
     public TextMeshProUGUI point;
+    public TextMeshProUGUI finalpoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,5 +21,6 @@ public class PointCounter : MonoBehaviour
     {
         string point_s = string.Format("{0}", points);
         point.text = point_s;
+        finalpoints.text = point_s;
     }
 }
