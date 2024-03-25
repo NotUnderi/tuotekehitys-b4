@@ -7,6 +7,8 @@ public class Coin : MonoBehaviour
     public float yAngle;
     public GameObject objekti;
     public PointCounter script;
+    public AudioSource coinSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,7 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter(Collider other){
         if(other.tag=="Player"){
             script.points = script.points + 1;
+            coinSound.Play();
             Destroy(gameObject);
             Debug.Log(other.tag);
         }
