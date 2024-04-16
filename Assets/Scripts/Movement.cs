@@ -13,8 +13,14 @@ public class Movement : MonoBehaviour
     public float gravity_scale = 4;
     public GameObject body;
     public GameObject feet;
+    public float dash_height;
+    public float dash_speed;
+
+    private bool i_jump;
+    private bool i_dash;
 
     private float lastPressed;
+    private float d_lastPressed;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,14 +28,19 @@ public class Movement : MonoBehaviour
         jumpSound = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
 
-        // Update is called once per frame
-        private void FixedUpdate()
+        
+        //if () { i_dash = true; };
+    }
+    // Update is called once per frame
+    private void FixedUpdate()
     {
         float inputh = Input.GetAxisRaw("Horizontal"); // Returns 1 when moving right and -1 when moving left
         Vector3 move = transform.right * inputh * speed * Time.deltaTime;
-
-        Quaternion rotation = Quaternion.Euler(0,90*inputh,0);
+        // 0 vas, -90 keski, 180 oikea
+        Quaternion rotation = Quaternion.Euler(0,90*inputh*-1,0);
         body.transform.localRotation = rotation;
     
         rb.MovePosition(transform.position + move);
@@ -45,7 +56,14 @@ public class Movement : MonoBehaviour
             lastPressed = Time.fixedTime;
             Debug.Log("Jump");
         }
+        if (Input.GetKey("space") && d_lastPressed + 1.0f < Time.fixedTime)
+        {
+            Debug.Log("Dash");
+            rb.AddForce(new Vector3(5.0f * inputh, dash_height, 0.0f) * dash_speed, ForceMode.Impulse);
 
+            d_lastPressed = Time.fixedTime;
+            i_dash = false;
+        }
 
 
     }
