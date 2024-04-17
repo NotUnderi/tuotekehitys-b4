@@ -4,6 +4,7 @@
 #
 .vsconfig
 .vscode/
+*.zip
 
 /[Ll]ibrary/
 /[Tt]emp/
