@@ -6,9 +6,11 @@ using TMPro;
 public class PointCounter : MonoBehaviour
 {
 
-    public float points;
+    public int points;
     public TextMeshProUGUI point;
     public TextMeshProUGUI finalpoints;
+    public TextMeshProUGUI Highscore;
+
 
     // Start is called before the first frame update
     void Start()
@@ -22,5 +24,14 @@ public class PointCounter : MonoBehaviour
         string point_s = string.Format("{0}", points);
         point.text = point_s;
         finalpoints.text = point_s;
+        int highScore = PlayerPrefs.GetInt("Highscore");
+        if (highScore < points)
+        {
+            PlayerPrefs.SetInt("Highscore", points);
+            highScore = points;
+        }
+        string highscore_s = string.Format("{0}", highScore);
+        Highscore.text = highscore_s;
+
     }
 }

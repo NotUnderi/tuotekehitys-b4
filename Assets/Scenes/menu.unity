@@ -852,9 +852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2bc8fc53eaf9a94093f836d3cf2102b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectSound: {fileID: 526377882}
   music: {fileID: 1390601958}
-  musicOn: 1
 --- !u!82 &526377882
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2358,6 +2356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1901817209}
   - component: {fileID: 1901817210}
+  - component: {fileID: 1901817211}
   m_Layer: 5
   m_Name: Music
   m_TagString: Untagged
@@ -2432,32 +2431,20 @@ MonoBehaviour:
   m_Group: {fileID: 0}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 526377881}
-        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
-        m_MethodName: switchMusic
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 526377881}
-        m_TargetAssemblyTypeName: AudioPlayer, Assembly-CSharp
-        m_MethodName: onSelect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 1
+--- !u!114 &1901817211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901817208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d6415c124ea6c4aafdfa6fc68bfa88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2015016423
 GameObject:
   m_ObjectHideFlags: 0

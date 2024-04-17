@@ -7,16 +7,15 @@ public class PauseMenu : MonoBehaviour
     public bool isPaused;
     public GameObject pausemenuCanvas;
     public GameObject submenu;
-    public AudioSource music;
+    private AudioSource music;
     private bool submenuOpen = false;
-    public bool musicSetting = true;
     //private float fixedDeltaTime;
     // Start is called before the first frame update
     void Start()
     {
         isPaused = false;
         Time.timeScale = 1.0f;
-
+        music = GetComponent<AudioSource>();
         //this.fixedDeltaTime = Time.fixedDeltaTime;
     }
 
@@ -35,7 +34,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1.0f;
         pausemenuCanvas.SetActive(false);
         isPaused = false;
-        if (musicSetting) { music.Play(); }
+        if (PlayerPrefs.GetInt("MusicStatus")==1) { music.Play(); }
         Debug.Log("Escape presed and game unpaused");
     }
 
@@ -63,10 +62,5 @@ public class PauseMenu : MonoBehaviour
             Debug.Log("Submenu closed");
 
         }
-    }
-    public void musicSwitch()
-    {
-        if (musicSetting) { musicSetting = false; }
-        else if (musicSetting == false) { musicSetting = true; }
     }
 }
